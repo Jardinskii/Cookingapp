@@ -9,7 +9,7 @@ Open `index.html` in a browser. It runs without sign-in, install steps, or live 
 ## What Is Included
 
 - One-question-at-a-time onboarding for ZIP code, household size, weekly meal count, budget, dietary restrictions, avoided foods, cooking time, skill level, calories, and recommendation style.
-- A visual meal gallery with 60+ sample meals and local meal thumbnail images.
+- A visual meal gallery with 100+ sample meals and 36 local meal thumbnail images.
 - Meal selection with an estimated weekly plan cost.
 - A generated grocery list with sample prices for Instacart, Walmart, Kroger, Safeway, Costco, and Target.
 - Store filter chips, per-item price selection, cheapest-cart helper, and weekly budget comparison.

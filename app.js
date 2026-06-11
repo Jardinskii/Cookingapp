@@ -7,20 +7,10 @@ const stores = [
   ["target", "Target", 1.02, "https://www.target.com/c/grocery/-/N-5xt1a"],
 ].map(([id, name, factor, url]) => ({ id, name, factor, url }));
 
-const photos = [
-  "assets/meals/meal-01.jpg",
-  "assets/meals/meal-02.jpg",
-  "assets/meals/meal-03.jpg",
-  "assets/meals/meal-04.jpg",
-  "assets/meals/meal-05.jpg",
-  "assets/meals/meal-06.jpg",
-  "assets/meals/meal-07.jpg",
-  "assets/meals/meal-08.jpg",
-  "assets/meals/meal-09.jpg",
-  "assets/meals/meal-10.jpg",
-  "assets/meals/meal-11.jpg",
-  "assets/meals/meal-12.jpg",
-];
+const photos = Array.from(
+  { length: 36 },
+  (_, index) => `assets/meals/meal-${String(index + 1).padStart(2, "0")}.jpg`,
+);
 
 const catalog = {
   eggs: ["Large eggs", "dozen", 1, 4.49],
@@ -145,6 +135,57 @@ const meals = [
   makeMeal("ramen-eggs", "Easy ramen eggs bowl", "Dinner", 20, 450, "Easy", 2.8, ["vegetarian", "dairy-free", "nut-free"], ["fast", "budget"], ["ramen", "eggs", "spinach", "sesameSauce"], [], 7),
 ];
 
+meals.push(
+  makeMeal("savory-cottage-toast", "Savory cottage cheese toast", "Breakfast", 10, 520, "Easy", 4.2, ["vegetarian", "nut-free", "kosher"], ["fast", "high-protein"], ["cottageCheese", "bread", "cherryTomatoes", "herbs"], [], 12),
+  makeMeal("southwest-breakfast-skillet", "Southwest breakfast skillet", "Breakfast", 30, 720, "Medium", 4.4, ["nut-free", "halal"], ["family", "high-protein"], ["eggs", "blackBeans", "peppers", "cheese", "salsa"], ["spicy"], 13),
+  makeMeal("salmon-avocado-toast", "Salmon avocado toast", "Breakfast", 12, 610, "Easy", 5.7, ["nut-free", "kosher"], ["fast", "high-protein"], ["salmon", "bread", "avocado", "cottageCheese"], [], 14),
+  makeMeal("peanut-banana-power-oats", "Peanut banana power oats", "Breakfast", 8, 680, "Easy", 2.9, ["vegetarian", "gluten-free", "dairy-free"], ["budget", "high-protein"], ["oats", "peanutButter", "bananas", "chia"], ["nuts"], 15),
+  makeMeal("tofu-scramble-tacos", "Tofu scramble tacos", "Breakfast", 25, 560, "Easy", 3.3, ["vegetarian", "vegan", "dairy-free", "nut-free", "halal", "kosher"], ["family", "healthy"], ["tofu", "tortillas", "peppers", "salsa", "spinach"], [], 16),
+  makeMeal("protein-yogurt-oats", "Protein yogurt oats", "Breakfast", 10, 640, "Easy", 3.5, ["vegetarian", "gluten-free", "nut-free", "kosher"], ["fast", "high-protein"], ["greekYogurt", "oats", "berries", "chia"], [], 17),
+  makeMeal("breakfast-grain-bowl", "Breakfast grain bowl", "Breakfast", 25, 700, "Medium", 4.2, ["vegetarian", "gluten-free", "nut-free", "kosher"], ["healthy", "variety"], ["quinoa", "eggs", "sweetPotato", "spinach"], [], 18),
+  makeMeal("turkey-egg-pita", "Turkey egg pita", "Breakfast", 20, 760, "Easy", 4.8, ["nut-free", "halal"], ["family", "high-protein"], ["turkeySlices", "eggs", "bread", "cheese"], [], 19),
+  makeMeal("avocado-chickpea-toast", "Avocado chickpea toast", "Breakfast", 15, 590, "Easy", 3.1, ["vegetarian", "vegan", "dairy-free", "nut-free", "halal", "kosher"], ["healthy", "fast"], ["chickpeas", "bread", "avocado", "cherryTomatoes"], [], 20),
+  makeMeal("cottage-cheese-pancakes", "Cottage cheese pancakes", "Breakfast", 25, 650, "Medium", 3.8, ["vegetarian", "nut-free", "kosher"], ["family", "high-protein"], ["cottageCheese", "eggs", "oats", "berries"], [], 21),
+  makeMeal("big-brunch-burritos", "Big brunch burritos", "Breakfast", 35, 930, "Medium", 4.7, ["nut-free", "halal"], ["family", "high-protein"], ["tortillas", "eggs", "groundTurkey", "blackBeans", "cheese", "salsa"], ["spicy"], 22),
+  makeMeal("low-carb-turkey-scramble", "Low-carb turkey scramble", "Breakfast", 18, 430, "Easy", 3.9, ["gluten-free", "nut-free", "low-carb", "halal"], ["fast", "high-protein"], ["turkeySlices", "eggs", "spinach", "peppers"], [], 23),
+  makeMeal("yogurt-chia-parfait", "Yogurt chia parfait", "Breakfast", 8, 480, "Easy", 3.2, ["vegetarian", "gluten-free", "nut-free", "kosher"], ["fast", "healthy"], ["greekYogurt", "berries", "chia", "bananas"], [], 24),
+  makeMeal("steak-breakfast-hash", "Steak breakfast hash", "Breakfast", 35, 850, "Medium", 5.6, ["gluten-free", "dairy-free", "nut-free", "halal"], ["high-protein", "family"], ["beef", "potatoes", "eggs", "peppers"], [], 25),
+  makeMeal("mediterranean-egg-bowl", "Mediterranean egg bowl", "Breakfast", 18, 540, "Easy", 3.7, ["vegetarian", "gluten-free", "nut-free", "kosher"], ["healthy", "fast"], ["eggs", "chickpeas", "cucumber", "cherryTomatoes"], [], 26),
+  makeMeal("loaded-oatmeal-bowl", "Loaded oatmeal bowl", "Breakfast", 12, 720, "Easy", 3.1, ["vegetarian", "gluten-free"], ["budget", "family"], ["oats", "peanutButter", "berries", "bananas", "chia"], ["nuts"], 27),
+  makeMeal("chicken-hummus-wrap", "Chicken hummus wrap", "Lunch", 15, 680, "Easy", 4.8, ["nut-free", "halal"], ["fast", "high-protein"], ["chickenBreast", "tortillas", "hummus", "lettuce", "cucumber"], [], 28),
+  makeMeal("salmon-pesto-pasta-salad", "Salmon pesto pasta salad", "Lunch", 20, 790, "Easy", 6.2, ["nut-free"], ["high-protein", "variety"], ["salmon", "pasta", "pesto", "cherryTomatoes", "spinach"], [], 29),
+  makeMeal("beef-taco-bowl", "Beef taco bowl", "Lunch", 25, 820, "Medium", 5.1, ["gluten-free", "nut-free", "halal"], ["family", "high-protein"], ["beef", "rice", "blackBeans", "salsa", "avocado"], ["spicy"], 30),
+  makeMeal("tofu-curry-rice-lunch", "Tofu curry rice lunch", "Lunch", 25, 650, "Easy", 3.5, ["vegetarian", "vegan", "gluten-free", "dairy-free", "nut-free"], ["healthy", "budget"], ["tofu", "coconutMilk", "rice", "broccoli"], ["spicy"], 31),
+  makeMeal("turkey-avocado-sandwich", "Turkey avocado sandwich", "Lunch", 10, 620, "Easy", 4.5, ["nut-free", "halal"], ["fast", "high-protein"], ["turkeySlices", "bread", "avocado", "lettuce"], [], 32),
+  makeMeal("lentil-couscous-bowl", "Lentil couscous bowl", "Lunch", 20, 560, "Easy", 2.9, ["vegetarian", "vegan", "dairy-free", "nut-free", "halal", "kosher"], ["healthy", "budget"], ["lentils", "couscous", "cherryTomatoes", "spinach"], [], 33),
+  makeMeal("shrimp-noodle-bowl", "Shrimp noodle bowl", "Lunch", 20, 720, "Easy", 5.4, ["dairy-free", "nut-free"], ["fast", "high-protein"], ["shrimp", "noodles", "sesameSauce", "broccoli"], ["shellfish"], 34),
+  makeMeal("tuna-melt-plate", "Tuna melt plate", "Lunch", 15, 690, "Easy", 3.9, ["nut-free"], ["fast", "family"], ["tuna", "bread", "cheese", "lettuce"], [], 35),
+  makeMeal("greek-chicken-salad", "Greek chicken salad", "Lunch", 20, 520, "Easy", 4.8, ["gluten-free", "nut-free", "halal"], ["healthy", "high-protein"], ["chickenBreast", "lettuce", "cucumber", "cherryTomatoes", "greekYogurt"], [], 12),
+  makeMeal("loaded-veggie-burger-lunch", "Loaded veggie burger lunch", "Lunch", 25, 760, "Medium", 3.7, ["vegetarian", "dairy-free", "nut-free", "halal", "kosher"], ["family", "budget"], ["blackBeans", "bread", "avocado", "lettuce", "sweetPotato"], [], 13),
+  makeMeal("pork-rice-bowl", "Pork rice bowl", "Lunch", 25, 810, "Medium", 5.2, ["gluten-free", "dairy-free", "nut-free"], ["family", "high-protein"], ["pork", "rice", "broccoli", "sesameSauce"], [], 14),
+  makeMeal("white-bean-pasta-lunch", "White bean pasta lunch", "Lunch", 25, 640, "Easy", 3.2, ["vegetarian", "nut-free"], ["budget", "healthy"], ["chickpeas", "pasta", "spinach", "tomatoSauce"], [], 15),
+  makeMeal("family-chicken-plate", "Family chicken plate", "Lunch", 20, 900, "Easy", 5.6, ["nut-free", "halal"], ["family", "high-protein"], ["chickenBreast", "potatoes", "broccoli", "cheese"], [], 16),
+  makeMeal("avocado-quinoa-power-salad", "Avocado quinoa power salad", "Lunch", 15, 600, "Easy", 4.1, ["vegetarian", "vegan", "gluten-free", "dairy-free", "nut-free"], ["healthy", "fast"], ["quinoa", "avocado", "chickpeas", "cucumber"], [], 17),
+  makeMeal("mushroom-turkey-lettuce-bowl", "Mushroom turkey lettuce bowl", "Lunch", 20, 530, "Easy", 4.2, ["gluten-free", "dairy-free", "nut-free", "low-carb", "halal"], ["healthy", "high-protein"], ["groundTurkey", "mushrooms", "lettuce", "peppers"], ["mushrooms"], 18),
+  makeMeal("cottage-tuna-lunch-box", "Cottage tuna lunch box", "Lunch", 10, 580, "Easy", 4.3, ["gluten-free", "nut-free"], ["fast", "high-protein"], ["cottageCheese", "tuna", "cucumber", "cherryTomatoes"], [], 19),
+  makeMeal("creamy-pesto-chicken-pasta", "Creamy pesto chicken pasta", "Dinner", 35, 980, "Medium", 5.4, ["nut-free"], ["family", "high-protein"], ["chickenBreast", "pasta", "pesto", "cheese", "spinach"], [], 20),
+  makeMeal("steak-and-potatoes-dinner", "Steak and potatoes dinner", "Dinner", 40, 1050, "Medium", 6.4, ["gluten-free", "nut-free"], ["family", "high-protein"], ["beef", "potatoes", "broccoli", "herbs"], [], 21),
+  makeMeal("salmon-avocado-rice-bowl", "Salmon avocado rice bowl", "Dinner", 25, 760, "Easy", 6.2, ["gluten-free", "dairy-free", "nut-free", "kosher"], ["healthy", "high-protein"], ["salmon", "rice", "avocado", "cucumber"], [], 22),
+  makeMeal("turkey-taco-casserole", "Turkey taco casserole", "Dinner", 40, 920, "Medium", 4.5, ["nut-free", "halal"], ["family", "high-protein"], ["groundTurkey", "tortillas", "blackBeans", "cheese", "salsa"], ["spicy"], 23),
+  makeMeal("coconut-shrimp-curry", "Coconut shrimp curry", "Dinner", 30, 880, "Medium", 5.8, ["gluten-free", "dairy-free", "nut-free"], ["variety", "high-protein"], ["shrimp", "coconutMilk", "rice", "broccoli"], ["shellfish", "spicy"], 24),
+  makeMeal("pork-couscous-platter", "Pork couscous platter", "Dinner", 35, 870, "Medium", 5.1, ["dairy-free", "nut-free"], ["family", "high-protein"], ["pork", "couscous", "peppers", "herbs"], [], 25),
+  makeMeal("vegan-ramen-tofu-bowl", "Vegan ramen tofu bowl", "Dinner", 25, 680, "Easy", 3.6, ["vegetarian", "vegan", "dairy-free", "nut-free"], ["fast", "healthy"], ["tofu", "ramen", "spinach", "sesameSauce"], [], 26),
+  makeMeal("cod-pesto-gnocchi", "Cod pesto gnocchi", "Dinner", 30, 740, "Medium", 5.2, ["nut-free"], ["variety", "high-protein"], ["cod", "gnocchi", "pesto", "cherryTomatoes"], [], 27),
+  makeMeal("beef-bolognese-pasta", "Beef bolognese pasta", "Dinner", 40, 970, "Medium", 5.4, ["nut-free", "halal"], ["family", "high-protein"], ["beef", "pasta", "tomatoSauce", "cheese"], [], 28),
+  makeMeal("chicken-tikka-rice-dinner", "Chicken tikka rice dinner", "Dinner", 35, 850, "Medium", 4.9, ["gluten-free", "nut-free", "halal"], ["family", "high-protein"], ["chickenBreast", "tikkaSauce", "rice", "greekYogurt"], ["spicy"], 29),
+  makeMeal("cauliflower-lentil-curry", "Cauliflower lentil curry", "Dinner", 35, 620, "Medium", 3.4, ["vegetarian", "vegan", "gluten-free", "dairy-free", "nut-free", "halal", "kosher"], ["healthy", "budget"], ["lentils", "cauliflower", "coconutMilk", "rice"], ["spicy"], 30),
+  makeMeal("salmon-potato-plate", "Salmon potato plate", "Dinner", 35, 820, "Easy", 6.2, ["gluten-free", "dairy-free", "nut-free", "kosher"], ["healthy", "high-protein"], ["salmon", "potatoes", "spinach", "herbs"], [], 31),
+  makeMeal("stuffed-pepper-rice-bake", "Stuffed pepper rice bake", "Dinner", 45, 780, "Medium", 4.6, ["gluten-free", "nut-free", "halal"], ["family", "high-protein"], ["groundTurkey", "peppers", "rice", "tomatoSauce", "cheese"], [], 32),
+  makeMeal("veggie-gnocchi-skillet", "Veggie gnocchi skillet", "Dinner", 25, 720, "Easy", 4.1, ["vegetarian", "nut-free", "kosher"], ["fast", "family"], ["gnocchi", "pesto", "spinach", "mushrooms"], ["mushrooms"], 33),
+  makeMeal("chicken-noodle-ramen-dinner", "Chicken noodle ramen dinner", "Dinner", 20, 760, "Easy", 4.2, ["dairy-free", "nut-free", "halal"], ["fast", "family"], ["chickenBreast", "ramen", "eggs", "spinach"], [], 34),
+  makeMeal("big-family-taco-night", "Big family taco night", "Dinner", 30, 1100, "Easy", 5.4, ["nut-free", "halal"], ["family", "high-protein"], ["tortillas", "beef", "blackBeans", "cheese", "salsa", "avocado"], ["spicy"], 35),
+);
+
 const dietaryOptions = [
   ["vegetarian", "Vegetarian"],
   ["vegan", "Vegan"],
@@ -191,7 +232,7 @@ const state = {
     avoid: [],
     timeLimit: 45,
     skill: "Medium",
-    calories: "No limit",
+    calories: "Unlimited",
     focus: "variety",
   },
 };
@@ -226,7 +267,7 @@ function dietaryMatch(meal, dietary) {
 
 function visibleMeals() {
   const profile = state.profile;
-  const calorieLimit = profile.calories === "No limit" ? Infinity : Number(profile.calories);
+  const calorieLimit = profile.calories === "Unlimited" ? Infinity : Number(profile.calories);
   const filtered = meals.filter((meal) => {
     const skillMatch =
       profile.skill === "Go all out" ||
@@ -383,7 +424,7 @@ function renderProfile() {
       eyebrow: "Calories",
       title: "Do you have a calorie limit per meal?",
       helper: "Pick a target or keep every meal available.",
-      content: `<div class="choice-grid">${["No limit", "350", "450", "550"].map((cal) => choice(cal === "No limit" ? cal : `Under ${cal} cal`, state.profile.calories === cal, "calories", cal)).join("")}</div>`,
+      content: `<div class="choice-grid">${["500", "650", "800", "1000", "1500", "Unlimited"].map((cal) => choice(cal === "Unlimited" ? cal : `Under ${cal}`, state.profile.calories === cal, "calories", cal)).join("")}</div>`,
     },
     {
       eyebrow: "Recommendation style",
