@@ -74,6 +74,14 @@ button:disabled {
   margin-bottom: 22px;
 }
 
+.brand-logo {
+  display: block;
+  width: clamp(210px, 26vw, 328px);
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 14px 34px rgba(13, 52, 39, 0.16);
+}
+
 .topbar h1,
 .question-card h2,
 .screen-section h2,

@@ -1,4 +1,4 @@
-# DailyCook
+# ForkCast
 
 A polished prototype for a cooking web app that helps people decide what to cook each week, estimate grocery costs, and jump to grocery delivery checkout.
 

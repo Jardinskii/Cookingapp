@@ -1,6 +1,6 @@
-# DailyCook Scoring Notes
+# ForkCast Scoring Notes
 
-DailyCook is a front-end cooking planner prototype designed to run from `index.html` without sign-in or live grocery APIs.
+ForkCast is a front-end cooking planner prototype designed to run from `index.html` without sign-in or live grocery APIs.
 
 ## What To Evaluate
 

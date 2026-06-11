@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 328 118" role="img" aria-labelledby="title">
+  <title id="title">ForkCast</title>
+  <rect width="328" height="118" fill="#0d3427"/>
+  <g fill="none" stroke="#22a37f" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-width="5" d="M37 22v41"/>
+    <path stroke-width="5" d="M47 22v41"/>
+    <path stroke-width="5" d="M57 22v41"/>
+    <path stroke-width="11" d="M47 63v36"/>
+    <path stroke-width="5" d="M76 47c6 5 6 15 0 20"/>
+    <path stroke-width="5" d="M88 37c13 13 13 39 0 52"/>
+    <path stroke-width="5" d="M99 27c20 20 20 53 0 74"/>
+  </g>
+  <circle cx="37" cy="62" r="4" fill="#22a37f"/>
+  <text x="126" y="71" fill="#fffaf0" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="700">ForkCast</text>
+</svg>

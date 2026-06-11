@@ -598,8 +598,7 @@ export default function Home() {
       <div className="app-frame">
         <header className="topbar">
           <div>
-            <p className="eyebrow">Meal decision helper</p>
-            <h1>DailyCook</h1>
+            <img className="brand-logo" src="/assets/forkcast-logo.svg" alt="ForkCast" />
           </div>
           <div className="zip-pill">
             <span>ZIP</span>

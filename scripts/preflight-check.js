@@ -52,7 +52,7 @@ pass("Static app styles exist", exists("styles.css"));
 
 const failed = checks.filter((check) => !check.ok);
 
-console.log("\nDailyCook preflight\n");
+console.log("\nForkCast preflight\n");
 for (const check of checks) {
   console.log(`${check.ok ? "PASS" : "FAIL"} ${check.name}${check.detail ? ` - ${check.detail}` : ""}`);
 }
