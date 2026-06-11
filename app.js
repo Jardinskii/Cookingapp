@@ -550,9 +550,10 @@ function renderSent() {
       <h2>Cart sent!</h2>
       <p>Your selected items have been prepared for grocery checkout. Open Instacart first, or use another store link for pickup and delivery.</p>
       <div class="checkout-links">
-        <a class="primary-link" href="${stores[0].url}" target="_blank" rel="noreferrer">Open Instacart cart (${items.length} items, ${currency(total)})</a>
-        ${breakdown.map((store) => `<a href="${store.url}" target="_blank" rel="noreferrer">Open ${store.name} cart (${store.items.length} items, ${currency(store.total)})</a>`).join("")}
+        <button class="primary-link" data-checkout-url="${stores[0].url}">Open Instacart cart (${items.length} items, ${currency(total)})</button>
+        ${breakdown.map((store) => `<button data-checkout-url="${store.url}">Open ${store.name} cart (${store.items.length} items, ${currency(store.total)})</button>`).join("")}
       </div>
+      <p class="checkout-note" id="checkout-note">Prototype checkout links are simulated for safe scoring.</p>
       <div class="final-total">
         <span>Estimated total: ${currency(total)}</span>
         <strong class="${under >= 0 ? "good" : "over"}">${under >= 0 ? `${currency(under)} under budget` : `${currency(Math.abs(under))} over budget`}</strong>
@@ -577,8 +578,16 @@ function choice(label, selected, group, value = label) {
 }
 
 app.addEventListener("click", (event) => {
-  const target = event.target.closest("button, a");
-  if (!target || target.tagName === "A") return;
+  const target = event.target.closest("button");
+  if (!target) return;
+
+  if (target.dataset.checkoutUrl) {
+    const note = document.querySelector("#checkout-note");
+    if (note) {
+      note.textContent = `Ready to open: ${target.dataset.checkoutUrl}`;
+    }
+    return;
+  }
 
   const action = target.dataset.action;
   if (action === "question-next") state.question += 1;
@@ -643,10 +652,19 @@ app.addEventListener("input", (event) => {
   if (!target.dataset.input) return;
 
   const key = target.dataset.input;
-  if (key === "zip") state.profile.zip = target.value.replace(/\D/g, "").slice(0, 5);
+  if (key === "zip") {
+    const nextZip = target.value.replace(/\D/g, "").slice(0, 5);
+    state.profile.zip = nextZip;
+    target.value = nextZip;
+    zipDisplay.textContent = nextZip || "-----";
+    return;
+  }
   if (key === "budget") state.profile.budget = Math.max(0, Number(target.value || 0));
-  if (key === "timeLimit") state.profile.timeLimit = Number(target.value);
-  render();
+  if (key === "timeLimit") {
+    state.profile.timeLimit = Number(target.value);
+    target.nextElementSibling.textContent = `${state.profile.timeLimit} min`;
+    return;
+  }
 });
 
 render();

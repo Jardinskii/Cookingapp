@@ -311,7 +311,8 @@ button:disabled {
 .secondary-button,
 .ghost-button,
 .primary-link,
-.checkout-links a {
+.checkout-links a,
+.checkout-links button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -672,6 +673,18 @@ button:disabled {
   font-weight: 750;
 }
 
+.checkout-links button:not(.primary-link) {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font-weight: 750;
+}
+
+.checkout-note {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 .final-total {
   display: flex;
   flex-wrap: wrap;
@@ -735,7 +748,8 @@ button:disabled {
   .secondary-button,
   .ghost-button,
   .primary-link,
-  .checkout-links a {
+  .checkout-links a,
+  .checkout-links button {
     width: 100%;
   }
 }

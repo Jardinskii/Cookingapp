@@ -38,3 +38,9 @@ yarn-error.log*
 next-env.d.ts
 /dist/
 /.wrangler/
+
+# local prototype preview captures
+/preview-*.png
+
+# accidental nested local repo
+/foodwebsie/

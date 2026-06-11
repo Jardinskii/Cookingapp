@@ -370,6 +370,9 @@ export default function Home() {
   const [selectedMealIds, setSelectedMealIds] = useState<string[]>([]);
   const [storeFilter, setStoreFilter] = useState<"all" | StoreId>("all");
   const [cartSelection, setCartSelection] = useState<Record<string, StoreId>>({});
+  const [checkoutNotice, setCheckoutNotice] = useState(
+    "Prototype checkout links are simulated for safe scoring.",
+  );
 
   const selectedMeals = useMemo(
     () => meals.filter((mealOption) => selectedMealIds.includes(mealOption.id)),
@@ -486,6 +489,7 @@ export default function Home() {
     setQuestion(0);
     setSelectedMealIds([]);
     setCartSelection({});
+    setCheckoutNotice("Prototype checkout links are simulated for safe scoring.");
     setScreen("profile");
   };
 
@@ -719,15 +723,22 @@ export default function Home() {
             </p>
 
             <div className="checkout-links">
-              <a className="primary-link" href={stores[0].deliveryUrl} target="_blank" rel="noreferrer">
+              <button
+                className="primary-link"
+                onClick={() => setCheckoutNotice(`Ready to open: ${stores[0].deliveryUrl}`)}
+              >
                 Open Instacart cart ({groceryItems.length} items, {formatCurrency(cartTotal)})
-              </a>
+              </button>
               {cartBreakdown.map((store) => (
-                <a key={store.id} href={store.deliveryUrl} target="_blank" rel="noreferrer">
+                <button
+                  key={store.id}
+                  onClick={() => setCheckoutNotice(`Ready to open: ${store.deliveryUrl}`)}
+                >
                   Open {store.name} cart ({store.items.length} items, {formatCurrency(store.total)})
-                </a>
+                </button>
               ))}
             </div>
+            <p className="checkout-note">{checkoutNotice}</p>
 
             <div className="final-total">
               <span>Estimated total: {formatCurrency(cartTotal)}</span>
