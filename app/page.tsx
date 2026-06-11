@@ -189,6 +189,62 @@ const groceryCatalog: Record<string, Grocery> = {
   cherryTomatoes: { name: "Cherry tomatoes", unit: "pint", baseQty: 1, basePrice: 3.29 },
 };
 
+const photoIndexFor = (
+  title: string,
+  type: MealType,
+  ingredients: string[],
+  fallback = 0,
+) => {
+  const haystack = `${title} ${type} ${ingredients.join(" ")}`.toLowerCase();
+  const has = (...terms: string[]) =>
+    terms.some((term) => haystack.includes(term));
+
+  if (has("waffle", "pancake")) return 24;
+  if (has("oat", "parfait", "yogurt", "berry bowl", "chia")) return 0;
+  if (has("smoothie")) return 14;
+  if (has("grain bowl", "quinoa", "greek grain", "power salad")) return 2;
+  if (has("avocado toast", "cottage cheese toast", "chickpea toast", "toast with eggs")) return 1;
+  if (has("breakfast burrito", "brunch burrito", "burrito")) return 12;
+  if (has("shakshuka")) return 13;
+  if (type === "Breakfast" && has("hash", "scramble", "frittata", "egg muffin", "egg bowl", "skillet")) return 25;
+  if (type === "Breakfast" && has("egg")) return 1;
+
+  if (has("chicken noodle")) return 26;
+  if (has("ramen")) return 16;
+  if (has("soup", "stew") && has("lentil")) return 20;
+  if (has("chili")) return 30;
+  if (has("soup", "white bean")) return 7;
+
+  if (has("stuffed pepper")) return 28;
+  if (has("cod")) return 27;
+  if (has("pork")) return 32;
+  if (has("steak")) return 17;
+  if (has("shrimp")) return 18;
+  if (has("tuna")) return 23;
+  if (has("salmon salad")) return 31;
+  if (has("salmon")) return 4;
+
+  if (has("pesto gnocchi", "gnocchi")) return 22;
+  if (has("pesto", "pasta", "bolognese")) return 6;
+  if (has("meatball")) return 15;
+  if (has("burger")) return 10;
+
+  if (has("tofu curry")) return 29;
+  if (has("curry")) return 9;
+  if (has("tofu", "stir fry", "sesame")) return 8;
+  if (has("roasted veggie", "veggie platter")) return 19;
+
+  if (has("taco bowl", "fajita bowl")) return 11;
+  if (has("taco", "enchilada")) return has("black bean", "veggie") ? 34 : 5;
+  if (has("pita", "wrap")) return 21;
+  if (has("couscous")) return 33;
+  if (has("rice bowl", "chicken bowl", "teriyaki", "honey garlic", "tikka")) return 35;
+  if (has("chicken", "turkey")) return 3;
+  if (has("bean", "chickpea", "lentil")) return 2;
+
+  return fallback % foodPhotos.length;
+};
+
 const meal = (
   id: string,
   title: string,
@@ -214,7 +270,7 @@ const meal = (
   focus,
   ingredients,
   avoidTags,
-  photo: foodPhotos[photoIndex % foodPhotos.length],
+  photo: foodPhotos[photoIndexFor(title, type, ingredients, photoIndex)],
 });
 
 const meals: Meal[] = [
