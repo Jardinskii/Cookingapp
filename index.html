@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DailyCook</title>
+    <meta
+      name="description"
+      content="A polished prototype meal planner that helps choose weekly meals and estimate grocery costs."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <div class="app-frame">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Meal decision helper</p>
+            <h1>DailyCook</h1>
+          </div>
+          <div class="zip-pill">
+            <span>ZIP</span>
+            <strong id="zip-display">80202</strong>
+          </div>
+        </header>
+
+        <div class="progress" id="progress" aria-label="Step 1 of 4"></div>
+        <section id="app"></section>
+      </div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
